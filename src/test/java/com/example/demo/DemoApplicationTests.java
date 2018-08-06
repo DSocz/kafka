@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.dto.Animal;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +33,9 @@ public class DemoApplicationTests {
 
 	@Test
 	public void testReceive() throws Exception {
-		sender.send(HELLOWORLD_TOPIC, "Hello Spring Kafka!");
+
+		Animal animal = new Animal();
+		sender.send(HELLOWORLD_TOPIC, animal);
 
 		receiver.getLatch().await(10000, TimeUnit.MILLISECONDS);
 		assertThat(receiver.getLatch().getCount()).isEqualTo(0);
