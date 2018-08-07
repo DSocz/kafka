@@ -1,20 +1,18 @@
 package com.example.demo.Controller;
 
 import com.example.demo.MessageStorage;
-import com.example.demo.Receiver;
 import com.example.demo.Sender;
+import com.example.demo.domain.AnimalRepository;
 import com.example.demo.dto.Animal;
 import com.example.demo.dto.BirthCertificate;
 import com.example.demo.dto.Dog;
-import org.apache.kafka.common.network.Receive;
-import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/jsa/kafka")
@@ -26,9 +24,15 @@ public class WebRestController {
     @Autowired
     MessageStorage messageStorage;
 
+    @Autowired
+    AnimalRepository animalRepository;
+
     @GetMapping(value="/test")
     public String test(){
-        return "Test complete";
+
+        List<Object> temp = animalRepository.getSpecies(1);
+
+        return temp.get(0).toString();
     }
 
 //    @GetMapping(value="/producer/{gatunek}")
@@ -50,7 +54,7 @@ public class WebRestController {
     public ResponseEntity<Animal> postAnimal(@RequestBody Animal animal){
 
         Animal animalReceived = animal;
-        animalReceived.setGatunek("Wolf");
+        animalReceived.setSpecies("Wolf");
         animalReceived.setGromada("mammals");
         return  new ResponseEntity<Animal>(animalReceived, HttpStatus.OK);
     }

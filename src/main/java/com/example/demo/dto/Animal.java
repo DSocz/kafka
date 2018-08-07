@@ -15,7 +15,7 @@ import java.io.Serializable;
 })
 public abstract class Animal implements Serializable {
 
-    private String gatunek;
+    private String species;
     private String gromada;
     private BirthCertificate birthCertificate;
 
@@ -23,7 +23,7 @@ public abstract class Animal implements Serializable {
     }
 
     public Animal(String gatunek, String gromada, BirthCertificate birthCertificate) {
-        this.gatunek = gatunek;
+        this.species = gatunek;
         this.gromada = gromada;
         this.birthCertificate = birthCertificate;
     }
@@ -36,16 +36,16 @@ public abstract class Animal implements Serializable {
         this.birthCertificate = birthCertificate;
     }
 
-    public String getGatunek() {
-        return gatunek;
+    public String getSpecies() {
+        return species;
     }
 
     public String getGromada() {
         return gromada;
     }
 
-    public void setGatunek(String gatunek) {
-        this.gatunek = gatunek;
+    public void setSpecies(String species) {
+        this.species = species;
     }
 
     public void setGromada(String gromada) {
@@ -55,7 +55,7 @@ public abstract class Animal implements Serializable {
     @Override
     public String toString() {
         return "Animal{" +
-                "gatunek='" + gatunek + '\'' +
+                "species='" + species + '\'' +
                 ", gromada='" + gromada + '\'' +
                 ", birthCertificate=" + birthCertificate +
                 '}';
