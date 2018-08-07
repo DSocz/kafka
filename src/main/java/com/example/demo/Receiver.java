@@ -22,10 +22,10 @@ public class Receiver {
         return latch;
     }
 
-    @KafkaListener(topics = "test_animal", groupId = "helloworld")
-    public void receive(Animal animal) {
-        LOGGER.info("received payload='{}'", animal);
-        latch.countDown();
-        messageStorage.put(animal);
-    }
+//    @KafkaListener(topics = "test_animal", groupId = "helloworld")
+//    public void receive(Animal animal) {
+//        LOGGER.info("received payload='{}'", animal);
+//        latch.countDown();
+//        messageStorage.put(animal);
+//    }
 }

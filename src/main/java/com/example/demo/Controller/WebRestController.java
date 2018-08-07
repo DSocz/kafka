@@ -6,6 +6,8 @@ import com.example.demo.Sender;
 import com.example.demo.dto.Animal;
 import org.apache.kafka.common.network.Receive;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,6 +19,11 @@ public class WebRestController {
 
     @Autowired
     MessageStorage messageStorage;
+
+    @GetMapping(value="/test")
+    public String test(){
+        return "Test complete";
+    }
 
 
     @GetMapping(value="/producer/{gatunek}")
@@ -32,5 +39,12 @@ public class WebRestController {
         String messages = messageStorage.toString();
         messageStorage.clear();
         return messages;
+    }
+
+    @PostMapping(value="/postAnimal")
+    public ResponseEntity<Animal> postAnimal(@RequestBody Animal animal){
+
+        Animal animelReceived = animal;
+        return  new ResponseEntity<Animal>(animelReceived, HttpStatus.OK);
     }
 }
