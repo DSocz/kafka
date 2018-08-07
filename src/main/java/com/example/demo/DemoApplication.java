@@ -11,9 +11,6 @@ public class DemoApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(DemoApplication.class, args);
-//		Animal animalDog = new Animal("pies", "ssak");
-//		Sender sender = new Sender();
-//		sender.send("test.t", animalDog);
 	}
 
 }
