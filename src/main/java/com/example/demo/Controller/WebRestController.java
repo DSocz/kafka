@@ -35,13 +35,13 @@ public class WebRestController {
         return temp.get(0).toString();
     }
 
-//    @GetMapping(value="/producer/{gatunek}")
-//    public String producer(@PathVariable String gatunek){
-//        Animal animal = new Animal(gatunek, "ssak");
-//        publisher.send("test_animal", animal);
-//
-//        return "Done";
-//    }
+    @GetMapping(value="/producer/{gatunek}")
+    public String producer(@PathVariable String gatunek){
+        Animal animal = new Dog(gatunek, "ssak");
+        publisher.send("test_animal", animal);
+
+        return "Done";
+    }
 
     @GetMapping(value="/consumer")
     public String getAllRecievedMessage(){
